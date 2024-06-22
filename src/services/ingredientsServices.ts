@@ -2,7 +2,7 @@ import { supabase } from "./supabase";
 
 async function findAll() {
     const { data } = await supabase
-        .from("ingredients")
+        .from("ingrediants")
         .select()
         .order("name")
         .returns<IngredientResponse[]>()
@@ -12,7 +12,7 @@ async function findAll() {
 
 async function findByIds(ids: string[]){
     const { data } = await supabase
-    .from("ingredients")
+    .from("ingrediants")
     .select()
     .in("id", ids)
     .order("name")
@@ -25,7 +25,7 @@ async function findByRecipeId(id: string){
     console.log(id)
     const { data, error } = await supabase
     .from("recipes_ingredients")
-    .select("ingredients (id, name, image)")
+    .select("ingrediants (id, name, image)")
     .eq("recipe_id", id)
     .returns<{ingredients:IngredientResponse}[]>()
     console.log(data)
